@@ -1,4 +1,5 @@
-﻿internal class Program
+﻿using System;
+internal class Program
 {
     static void Main(string[] args)
     {
@@ -75,24 +76,21 @@
             else Console.WriteLine("Число, с заданными позициями элемента, не существует");
         }
 
-        double AverageSummNum(int[,] matrix)
+        double AverageSummNum(int[,] matrix,int num)
         {
-            int j = 0;
-            int count = 1;
+            int j = num;
             double summ = 0;
+            
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                summ = summ + matrix[i, 0];
-                i++;
-                count++;
+                summ = summ + matrix[i, j];                    
             }
          
-            Console.WriteLine($"Сумма чисел в первом столбце {summ}.");
-            Console.WriteLine($"Количество чисел в первом столбце {count}.");
-            return summ/=count;
-            
-        }
-
+            Console.WriteLine($"Сумма чисел в столбце {j} равна {summ}.");
+            Console.WriteLine($"Количество чисел в первом столбце {matrix.GetLength(0)}.");    
+            return summ/matrix.GetLength(0);
+            }
+      
         // Задача 47. Задайте двумерный массив размером m×n, 
         // заполненный случайными вещественными числами. m = 3, n = 4.
 
@@ -128,9 +126,10 @@
             int[,] table = new int[5, 5];
             FillArray(table);
             PrintArray(table);
-            Console.WriteLine($"Среднее арифметическое элементов в столбце {AverageSummNum(table)}.");
+            int num = Convert.ToInt32(Input("Введите номер столбца для дальнейшего расчета среднего арифметического: "));
+            Console.WriteLine($"Среднее арифметическое элементов в столбце {num} равно {AverageSummNum(table)}.");
         }
-        // Task52();
+        Task52();
 
 
     }
