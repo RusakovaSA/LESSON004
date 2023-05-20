@@ -76,9 +76,9 @@ internal class Program
             else Console.WriteLine("Число, с заданными позициями элемента, не существует");
         }
 
-        double AverageSummNum(int[,] matrix,int num)
+        double AverageSummNum(int[,] matrix)
         {
-            int j = num;
+            int j = 0;
             double summ = 0;
             
             for (int i = 0; i < matrix.GetLength(0); i++)
@@ -86,7 +86,7 @@ internal class Program
                 summ = summ + matrix[i, j];                    
             }
          
-            Console.WriteLine($"Сумма чисел в столбце {j} равна {summ}.");
+            Console.WriteLine($"Сумма чисел в столбце {j+1} равна {summ}.");
             Console.WriteLine($"Количество чисел в первом столбце {matrix.GetLength(0)}.");    
             return summ/matrix.GetLength(0);
             }
@@ -126,8 +126,8 @@ internal class Program
             int[,] table = new int[5, 5];
             FillArray(table);
             PrintArray(table);
-            int num = Convert.ToInt32(Input("Введите номер столбца для дальнейшего расчета среднего арифметического: "));
-            Console.WriteLine($"Среднее арифметическое элементов в столбце {num} равно {AverageSummNum(table)}.");
+            // int num = Convert.ToInt32(Input("Введите номер столбца для дальнейшего расчета среднего арифметического: "));
+            Console.WriteLine($"Среднее арифметическое элементов в столбце равно {AverageSummNum(table)}.");
         }
         Task52();
 
